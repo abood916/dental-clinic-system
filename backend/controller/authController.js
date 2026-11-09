@@ -4,16 +4,10 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const Clinic = require('../models/Clinic');
 
+
 const register = async (req, res) => {
     try {
-        const {
-            fullName,
-            email,
-            password,
-            role,
-            branchId,
-        } = req.body;
-
+        const { fullName, email, password } = req.body;
 
         if (!fullName || !email || !password) {
             return res.status(400).json({
@@ -24,15 +18,6 @@ const register = async (req, res) => {
         if (password.length < 8) {
             return res.status(400).json({
                 message: "Password must be at least 8 characters",
-            });
-        }
-
-        const allowedRoles = ["doctor", "receptionist"];
-        const employeeRole = role || "receptionist";
-
-        if (!allowedRoles.includes(employeeRole)) {
-            return res.status(400).json({
-                message: "Invalid employee role",
             });
         }
 
@@ -48,45 +33,35 @@ const register = async (req, res) => {
             });
         }
 
-        let employeeBranch = null;
+        // Shared training clinic
+        let clinic = await Clinic.findOne({
+            email: "training@dental-clinic.local",
+        });
 
-        if (branchId) {
-            const branch = await Branch.findOne({
-                _id: branchId,
-                clinic: req.user.clinicId,
-                isActive: true,
+        if (!clinic) {
+            clinic = await Clinic.create({
+                name: "Training Dental Clinic",
+                email: "training@dental-clinic.local",
             });
-
-            if (!branch) {
-                return res.status(400).json({
-                    message: "Invalid branch for this clinic",
-                });
-            }
-
-            employeeBranch = branch._id;
         }
 
         const hashedPassword = await bcrypt.hash(password, 12);
-
 
         const user = await User.create({
             fullName: fullName.trim(),
             email: normalizeEmail,
             password: hashedPassword,
-            role: employeeRole,
-            clinic: req.user.clinicId,
-            branch: employeeBranch,
+            role: "receptionist",
+            clinic: clinic._id,
         });
 
         return res.status(201).json({
-            message: "Employee created successfully",
-            employee: {
+            message: "Account created successfully",
+            user: {
                 id: user._id,
                 fullName: user.fullName,
                 email: user.email,
                 role: user.role,
-                clinic: user.clinic,
-                branch: user.branch,
             },
         });
 
@@ -98,6 +73,7 @@ const register = async (req, res) => {
         });
     }
 };
+
 
 
 const login = async(req, res) => {

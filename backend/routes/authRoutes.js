@@ -7,7 +7,7 @@ const authorizeRoles = require("../middleware/authorizeRoles");
 
 const {register, login} = require('../controller/authController');
 
-router.post("/register", authMiddleware, authorizeRoles("admin"), register);
+router.post("/register", register);
 router.post('/login', login);
 
 router.get("/me", authMiddleware, (req, res) => {
