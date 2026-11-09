@@ -40,12 +40,12 @@ export default function AppointmentsPage() {
       const headers = { Authorization: `Bearer ${token}` };
 
       // Fetch Appointments
-      const appRes = await fetch("http://localhost:4000/api/appointments", { headers });
+      const appRes = await fetch("https://dental-clinic-system-2.onrender.com/api/appointments", { headers });
       const appData = await appRes.json();
       if (appData.data) setAppointments(appData.data);
 
       // Fetch Patients
-      const patRes = await fetch("http://localhost:4000/api/patient", { headers });
+      const patRes = await fetch("https://dental-clinic-system-2.onrender.com/api/patient", { headers });
       const patData = await patRes.json();
       if (patData.data) setPatients(patData.data);
 
@@ -65,7 +65,7 @@ export default function AppointmentsPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/appointments", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/appointments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

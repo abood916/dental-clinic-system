@@ -24,7 +24,7 @@ export default function ExpensesPage() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/expenses", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/expenses", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -46,7 +46,7 @@ export default function ExpensesPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/expenses", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/expenses", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

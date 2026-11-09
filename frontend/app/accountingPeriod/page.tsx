@@ -25,7 +25,7 @@ export default function AccountingPeriodsPage() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/accounting-periods", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/accounting-periods", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -47,7 +47,7 @@ export default function AccountingPeriodsPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/accounting-periods", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/accounting-periods", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export default function AccountingPeriodsPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:4000/api/accounting-periods/${id}/close`, {
+      const res = await fetch(`https://dental-clinic-system-2.onrender.com/api/accounting-periods/${id}/close`, {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
       });

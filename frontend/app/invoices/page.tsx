@@ -40,11 +40,11 @@ export default function InvoicesPage() {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
 
-      const invRes = await fetch("http://localhost:4000/api/invoices", { headers });
+      const invRes = await fetch("https://dental-clinic-system-2.onrender.com/api/invoices", { headers });
       const invData = await invRes.json();
       if (invData.invoices) setInvoices(invData.invoices);
 
-      const patRes = await fetch("http://localhost:4000/api/patient", { headers });
+      const patRes = await fetch("https://dental-clinic-system-2.onrender.com/api/patient", { headers });
       const patData = await patRes.json();
       if (patData.data) setPatients(patData.data);
 
@@ -76,7 +76,7 @@ export default function InvoicesPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/invoices", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/invoices", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

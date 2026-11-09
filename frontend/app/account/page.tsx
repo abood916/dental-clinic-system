@@ -25,7 +25,7 @@ export default function AccountsPage() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/accounts", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/accounts", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -47,7 +47,7 @@ export default function AccountsPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/accounts", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/accounts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export default function AccountsPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:4000/api/accounts/${id}/deactivate`, {
+      const res = await fetch(`https://dental-clinic-system-2.onrender.com/api/accounts/${id}/deactivate`, {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
       });

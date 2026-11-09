@@ -1,6 +1,6 @@
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
+  process.env.NEXT_PUBLIC_API_URL || "https://dental-clinic-system-2.onrender.com/api";
 
 export async function apiRequest<T>(
   endpoint: string,

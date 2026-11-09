@@ -27,7 +27,7 @@ export default function PatientsPage() {
       try {
         const token = localStorage.getItem("token");
         console.log("Token sent:", token);         
-        const res = await fetch("http://localhost:4000/api/patient", {
+        const res = await fetch("https://dental-clinic-system-2.onrender.com/api/patient", {
           headers: {
             "Authorization": `Bearer ${token}`
           }
@@ -53,7 +53,7 @@ export default function PatientsPage() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/patient", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/patient", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -32,7 +32,7 @@ export default function LoginPage() {
 
       try {
         const response = await fetch(
-          "http://localhost:4000/api/auth/me",
+          "https://dental-clinic-system-2.onrender.com/api/auth/me",
           {
             method: "GET",
             headers: {
@@ -65,7 +65,7 @@ export default function LoginPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/auth/login",
+        "https://dental-clinic-system-2.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {

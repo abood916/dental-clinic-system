@@ -16,7 +16,7 @@ export default function RegisterPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/auth/register",
+        "https://dental-clinic-system-2.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {

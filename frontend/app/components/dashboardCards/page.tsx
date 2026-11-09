@@ -19,10 +19,10 @@ export default function DashboardCards() {
         const headers = { Authorization: `Bearer ${token}` };
 
         const [appRes, invRes, payRes, empRes] = await Promise.all([
-          fetch("http://localhost:4000/api/appointments", { headers }).catch(() => null),
-          fetch("http://localhost:4000/api/invoices", { headers }).catch(() => null),
-          fetch("http://localhost:4000/api/payments", { headers }).catch(() => null),
-          fetch("http://localhost:4000/api/hr/employees", { headers }).catch(() => null),
+          fetch("https://dental-clinic-system-2.onrender.com/api/appointments", { headers }).catch(() => null),
+          fetch("https://dental-clinic-system-2.onrender.com/api/invoices", { headers }).catch(() => null),
+          fetch("https://dental-clinic-system-2.onrender.com/api/payments", { headers }).catch(() => null),
+          fetch("https://dental-clinic-system-2.onrender.com/api/hr/employees", { headers }).catch(() => null),
         ]);
 
         const appData = appRes ? await appRes.json() : {};

@@ -62,10 +62,10 @@ export default function HRPage() {
       const headers = { Authorization: `Bearer ${token}` };
 
       const [empRes, attRes, leaveRes, payRes] = await Promise.all([
-        fetch("http://localhost:4000/api/hr/employees", { headers }),
-        fetch("http://localhost:4000/api/hr/attendance", { headers }),
-        fetch("http://localhost:4000/api/hr/leaves", { headers }),
-        fetch("http://localhost:4000/api/hr/payroll", { headers }),
+        fetch("https://dental-clinic-system-2.onrender.com/api/hr/employees", { headers }),
+        fetch("https://dental-clinic-system-2.onrender.com/api/hr/attendance", { headers }),
+        fetch("https://dental-clinic-system-2.onrender.com/api/hr/leaves", { headers }),
+        fetch("https://dental-clinic-system-2.onrender.com/api/hr/payroll", { headers }),
       ]);
 
       const empData = await empRes.json();
@@ -92,7 +92,7 @@ export default function HRPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/hr/employees", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/hr/employees", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ fullName, phone, jobTitle, salary: Number(salary) }),
@@ -115,7 +115,7 @@ export default function HRPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/hr/attendance", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/hr/attendance", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ employee: empId, status, checkIn: new Date() }),

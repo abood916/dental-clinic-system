@@ -18,9 +18,9 @@ export default function FinancialSummary() {
         const headers = { Authorization: `Bearer ${token}` };
 
         const [payRes, expRes, invRes] = await Promise.all([
-          fetch("http://localhost:4000/api/payments", { headers }).catch(() => null),
-          fetch("http://localhost:4000/api/expenses", { headers }).catch(() => null),
-          fetch("http://localhost:4000/api/invoices", { headers }).catch(() => null),
+          fetch("https://dental-clinic-system-2.onrender.com/api/payments", { headers }).catch(() => null),
+          fetch("https://dental-clinic-system-2.onrender.com/api/expenses", { headers }).catch(() => null),
+          fetch("https://dental-clinic-system-2.onrender.com/api/invoices", { headers }).catch(() => null),
         ]);
 
         const payData = payRes ? await payRes.json() : {};

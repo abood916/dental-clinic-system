@@ -34,11 +34,11 @@ export default function JournalEntriesPage() {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
 
-      const entryRes = await fetch("http://localhost:4000/api/journal-entries", { headers });
+      const entryRes = await fetch("https://dental-clinic-system-2.onrender.com/api/journal-entries", { headers });
       const entryData = await entryRes.json();
       if (entryData.entries) setEntries(entryData.entries);
 
-      const accRes = await fetch("http://localhost:4000/api/accounts", { headers });
+      const accRes = await fetch("https://dental-clinic-system-2.onrender.com/api/accounts", { headers });
       const accData = await accRes.json();
       if (accData.accounts) setAccounts(accData.accounts);
 
@@ -63,7 +63,7 @@ export default function JournalEntriesPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/journal-entries", {
+      const res = await fetch("https://dental-clinic-system-2.onrender.com/api/journal-entries", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
