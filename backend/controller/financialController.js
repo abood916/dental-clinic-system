@@ -1,6 +1,6 @@
 
 const Invoice = require("../models/Invoice");
-const Payment = require("../models/Payment");
+const Payment = require("../models/payment");
 const Expense = require("../models/Expense");
 
 const getFinancialSummary = async (req, res) => {
