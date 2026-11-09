@@ -57,7 +57,11 @@ export default function FinancialSummary() {
     fetchFinancialData();
   }, []);
 
-  const currentMonth = new Date().toLocaleString("en-US", { month: "long", year: "numeric" });
+  const [currentMonth, setCurrentMonth] = useState("");
+
+useEffect(() => {
+  setCurrentMonth(new Date().toLocaleString("en-US", { month: "long", year: "numeric" }));
+}, []);
 
   return (
   <div className="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100 flex-1 w-full md:w-2/5 flex flex-col justify-between">
